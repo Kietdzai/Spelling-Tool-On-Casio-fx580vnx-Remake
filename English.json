@@ -1,0 +1,25 @@
+{
+    "1A": "Length of spell context '",
+    "1B": "' was greater than 17 - That's a limit of characters that one line on Casio fx580vnx can contains.\n",
+
+    "2A": "Invalid argument '",
+    "2B": "' after flag '-p'.\n",
+
+    "3A": "Invalid argument '",
+    "3B": "' after flag '--debug'.\n",
+
+    "4A": "Unknown flag '",
+    "4B": "'.\n",
+
+    "5A": "Flag '-lang' was already called !\n",
+    "5B": "Flags '-c' or '-context' was already called !\n",
+    "5C": "Flag '-p' was already called !\n",
+    "5D": "Flag '--debug' was already called !\n",
+
+    "6A": "Casio Speller for Casio fx580vnx. Version '",
+    "6B": "'.\n",
+
+    "7A": "Cannot found language '",
+    "7B": "'. You can also create a file named '",
+    "7C": ".json', with its context is your translations.\n"
+}

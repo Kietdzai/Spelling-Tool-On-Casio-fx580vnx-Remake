@@ -1,0 +1,25 @@
+{
+    "1A": "Độ dài chuỗi '",
+    "1B": "' lớn hơn 17 - Đây là giới hạn số kí tụ của 1 dòng trong Casio fx580vnx có thể chứa.\n",
+
+    "2A": "Đối số không hợp lệ '",
+    "2B": "' sau cờ '-p'\n",
+    
+    "3A": "Đối số không hợp lệ '",
+    "3B": "' sau cờ '--debug'\n",
+
+    "4A": "Cờ không rõ '",
+    "4B": "'.\n",
+
+    "5A": "Cờ '-lang' đã được gọi sẵn !\n",
+    "5B": "Cờ '-c' hoặc '-context' đã được gọi sẵn !\n",
+    "5C": "Cờ '-p' đã được gọi sẵn !\n",
+    "5D": "Cờ '--debug' đã được gọi sẵn !\n",
+
+    "6A": "Tool giúp spell trên Casio fx580vnx. Phiên bản '",
+    "6B": "'.\n",
+
+    "7A": "Không thể tìm thấy ngôn ngữ '",
+    "7B": "'. Bạn có thể tạo một tệp tin '",
+    "7C": ".json', với nội dung trong đó là bản dịch sang ngôn ngữ của bạn.\n"
+}

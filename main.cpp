@@ -76,7 +76,7 @@ void HelpScreen() noexcept {
 }
 
 int main(int argc, char** argv){
-    system("chcp 65001 >nul 2>&1");
+    // system("chcp 65001 >nul 2>&1"); // For Windows commands
     opts["lang"] = "English";
     opts["errs"] = "0";
 

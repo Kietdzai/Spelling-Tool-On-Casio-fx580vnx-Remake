@@ -12,7 +12,7 @@
     "4B": "'.\n",
 
     "5A": "Flag '-lang' was already called !\n",
-    "5B": "Flags '-c' or '-context' was already called !\n",
+    "5B": "Flag '-c' or '-context' was already called !\n",
     "5C": "Flag '-p' was already called !\n",
     "5D": "Flag '--debug' was already called !\n",
 

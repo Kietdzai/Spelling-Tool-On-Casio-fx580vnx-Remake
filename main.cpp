@@ -39,7 +39,7 @@ void HelpScreen() noexcept {
               << " Follow JSON Objects syntax, you may be successfully change to your language!\n";
 
     std::cout << " Basic Usage: spell.exe (you can also using flags like above usage).\n"
-              << " If you do not provide a context to spell or (and) position of context on Casio's screen with flags, the program will prompt you to enter it.\n";
+              << " If you do not provide a context to spell with flags, the program will prompt you to enter it.\n";
     std::cout << " If you have provided all required inputs, you can press the buttons on your Casio fx580vnx like this tutorial.\n"
               << " I hope you are successfully!\n";
 
@@ -70,18 +70,17 @@ void HelpScreen() noexcept {
               << " Tuân theo các yêu cầu của JSON dạng Object, bạn có thể thành công để đổi ngôn ngữ chương trình này theo ngôn ngữ của bạn!\n";
 
     std::cout << " Các dùng cơ bản: spell.exe (bạn cũng có thể kết hợp các cờ có sẵn ở trên).\n"
-              << " Nếu bạn không nhập nội dung cần để spell hoặc (và) vị trí của nó trên màn hình, cách này sẽ bắt buộc bạn nhập.\n";
+              << " Nếu bạn không nhập nội dung cần để spell, cách này sẽ bắt buộc bạn nhập.\n";
     std::cout << " Nếu bạn đã nhập hết những yêu cầu bắt buộc như trên, tiếp theo bạn cần nhấn các nút trên Casio fx580vnx của bạn như trên màn hình xuất ra.\n"
               << " Tôi hi vọng bạn sẽ thành công!\n";
 }
 
 int main(int argc, char** argv){
-    // system("chcp 65001 >nul 2>&1"); // For Windows commands
+    // system("chcp 65001 >nul 2>&1"); // For Windows
     opts["lang"] = "English";
-    opts["errs"] = "0";
-    opts["warns"] = "0";
 
-    std::map<std::string, short> called_args = {};
+    std::map<std::string, bool> called_args = {};
+    long long errs = 0, warns = 0;
 
     if (argc > 0){
         JSONObject lang_pack_obj_default(opts["lang"] + ".json");
@@ -92,7 +91,7 @@ int main(int argc, char** argv){
         
         for (int pos = 1; pos < argc; pos++){
             if (std::strcmp(argv[pos], "-lang") == 0){
-                if (called_args["-lang"] == 0){
+                if (!called_args["-lang"]){
                     if (opts["lang"] != argv[pos + 1]) {
                         // Kiểm tra ngôn ngữ đã được đặt chưa
                         opts["lang"] = argv[pos + 1];
@@ -105,26 +104,26 @@ int main(int argc, char** argv){
 
                         lang_pack_obj = new_lang_pack;
                     }
-                    called_args["-lang"]++;
+                    called_args["-lang"] = true;
                 }
-                else if (called_args["-lang"] > 0 && opts["Is Debug Mode"] == "true"){
+                else if (called_args["-lang"] && opts["Is Debug Mode"] == "true"){
                     std::cout << GetStringByLangPack("5A");
-                    // opts["warns"] = std::stoi(opts["warns"]) + 1;
+                    warns++;
                 }
                 pos++; continue;
             }
             if (std::strcmp(argv[pos], "-context") == 0 ||
                 std::strcmp(argv[pos], "-c") == 0){
-                    if (called_args["-c"] == 0) {
+                    if (!called_args["-c"]) {
                         opts["Context"] = argv[pos + 1];
-                        called_args["-c"]++;
-                    } else if (called_args["-c"] > 0 && opts["Is Debug Mode"] == "true") {
+                        called_args["-c"] = true;
+                    } else if (called_args["-c"] && opts["Is Debug Mode"] == "true") {
                         std::cout << GetStringByLangPack("5B");
-                        // opts["warns"] = std::stoi(opts["warns"]) + 1;
+                        warns++;
                     }
                     if (opts["Context"].length() > 17){
                         std::cout << GetStringByLangPack("1A") << opts["Context"] << GetStringByLangPack("1B");
-                        opts["errs"] = std::stoi(opts["errs"]) + 1;
+                        errs++;
                     }
                     pos++; continue;
             }
@@ -133,14 +132,14 @@ int main(int argc, char** argv){
                     std::strcmp(argv[pos + 1], "Middle") != 0 &&
                     std::strcmp(argv[pos + 1], "Right") != 0){
                         std::cout << GetStringByLangPack("2A") << std::string(argv[pos + 1]) << GetStringByLangPack("2B");
-                        opts["errs"] = std::stoi(opts["errs"]) + 1;
+                        errs++;
                 } else {
-                    if (called_args["-p"] == 0) {
+                    if (!called_args["-p"]) {
                         opts["Pos In Screen"] = argv[pos + 1];
-                        called_args["-p"]++;
-                    } else if (called_args["-p"] > 0 && opts["Is Debug Mode"] == "true"){
+                        called_args["-p"] = true;
+                    } else if (called_args["-p"] && opts["Is Debug Mode"] == "true"){
                         std::cout << GetStringByLangPack("5C");
-                        // opts["warns"] = std::stoi(opts["warns"]) + 1;
+                        warns++;
                     }
                 }
                 pos++; continue;
@@ -149,18 +148,17 @@ int main(int argc, char** argv){
                 if (std::strcmp(argv[pos + 1], "true") != 0 &&
                     std::strcmp(argv[pos + 1], "false") != 0){
                         std::cout << GetStringByLangPack("3A") << std::string(argv[pos + 1]) << GetStringByLangPack("3B");
-                        opts["errs"] = std::stoi(opts["errs"]) + 1;
+                        errs++;
                 } else {
-                    if (called_args["--debug"] == 0){
+                    if (!called_args["--debug"]){
                         opts["Is Debug Mode"] = argv[pos + 1];
-                        called_args["--debug"]++;
-                    } else if (called_args["--debug"] > 0 && opts["Is Debug Mode"] == "true"){
+                        called_args["--debug"] = true;
+                    } else if (called_args["--debug"] && opts["Is Debug Mode"] == "true"){
                         std::cout << GetStringByLangPack("5D");
-                        // opts["warns"] = std::stoi(opts["warns"]) + 1;
+                        warns++;
                     }
                 }
-                pos++;
-                continue;
+                pos++; continue;
             }
             if (std::strcmp(argv[pos], "--help") == 0){
                 HelpScreen();
@@ -172,9 +170,16 @@ int main(int argc, char** argv){
             }
             else {
                 std::cout << GetStringByLangPack("4A") << argv[pos] << GetStringByLangPack("4B");
-                opts["errs"] = std::stoi(opts["errs"]) + 1;
+                errs++;
             }
         }
+    }
+    // Nếu các cờ không được đặt đối số, thì sẽ đặt mặc định
+    if (opts.find("Is Debug Mode") == opts.end()){
+        opts["Is Debug Mode"] = "false";
+    }
+    if (opts.find("Pos In Screen") == opts.end()){
+        opts["Pos In Screen"] = "Middle";
     }
     if (opts.find("Context") == opts.end() || opts["Context"] == "" || opts["Context"].length() > 17){
         if (opts.find("Context") == opts.end()) std::cout << GetStringByLangPack("9");
@@ -186,19 +191,18 @@ int main(int argc, char** argv){
         }
         std::cin >> opts["Context"];
         while (opts["Context"] == "" || opts["Context"].length() > 17){
-            opts["errs"] = std::stoi(opts["errs"]) + 1;
             std::cout << GetStringByLangPack("11");
             std::cin >> opts["Context"];
         }
     }
 
-    // if (opts["Is Debug Mode"] == "true"){
-    //     if (std::stoi(opts["errs"]) > 0){
-    //         std::cout << GetStringByLangPack("13");
-    //     }
-    //     if (std::stoi(opts["warns"]) > 0){
-    //         std::cout << GetStringByLangPack("14");
-    //     }
-    // }
+    if (opts["Is Debug Mode"] == "true"){
+        if (errs > 0){
+            std::cout << errs << GetStringByLangPack("13");
+        }
+        if (warns > 0){
+            std::cout << warns << GetStringByLangPack("14");
+        }
+    }
     return 0;
 }

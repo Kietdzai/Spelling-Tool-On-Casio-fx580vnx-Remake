@@ -79,6 +79,7 @@ int main(int argc, char** argv){
     // system("chcp 65001 >nul 2>&1"); // For Windows commands
     opts["lang"] = "English";
     opts["errs"] = "0";
+    opts["warns"] = "0";
 
     std::map<std::string, short> called_args = {};
 
@@ -108,6 +109,7 @@ int main(int argc, char** argv){
                 }
                 else if (called_args["-lang"] > 0 && opts["Is Debug Mode"] == "true"){
                     std::cout << GetStringByLangPack("5A");
+                    // opts["warns"] = std::stoi(opts["warns"]) + 1;
                 }
                 pos++; continue;
             }
@@ -118,6 +120,7 @@ int main(int argc, char** argv){
                         called_args["-c"]++;
                     } else if (called_args["-c"] > 0 && opts["Is Debug Mode"] == "true") {
                         std::cout << GetStringByLangPack("5B");
+                        // opts["warns"] = std::stoi(opts["warns"]) + 1;
                     }
                     if (opts["Context"].length() > 17){
                         std::cout << GetStringByLangPack("1A") << opts["Context"] << GetStringByLangPack("1B");
@@ -137,6 +140,7 @@ int main(int argc, char** argv){
                         called_args["-p"]++;
                     } else if (called_args["-p"] > 0 && opts["Is Debug Mode"] == "true"){
                         std::cout << GetStringByLangPack("5C");
+                        // opts["warns"] = std::stoi(opts["warns"]) + 1;
                     }
                 }
                 pos++; continue;
@@ -152,6 +156,7 @@ int main(int argc, char** argv){
                         called_args["--debug"]++;
                     } else if (called_args["--debug"] > 0 && opts["Is Debug Mode"] == "true"){
                         std::cout << GetStringByLangPack("5D");
+                        // opts["warns"] = std::stoi(opts["warns"]) + 1;
                     }
                 }
                 pos++;
@@ -181,9 +186,19 @@ int main(int argc, char** argv){
         }
         std::cin >> opts["Context"];
         while (opts["Context"] == "" || opts["Context"].length() > 17){
+            opts["errs"] = std::stoi(opts["errs"]) + 1;
             std::cout << GetStringByLangPack("11");
             std::cin >> opts["Context"];
         }
     }
+
+    // if (opts["Is Debug Mode"] == "true"){
+    //     if (std::stoi(opts["errs"]) > 0){
+    //         std::cout << GetStringByLangPack("13");
+    //     }
+    //     if (std::stoi(opts["warns"]) > 0){
+    //         std::cout << GetStringByLangPack("14");
+    //     }
+    // }
     return 0;
 }

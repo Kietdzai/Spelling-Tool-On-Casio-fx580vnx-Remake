@@ -21,5 +21,11 @@
 
     "7A": "Cannot found language '",
     "7B": "'. You can also create a file named '",
-    "7C": ".json', with its context is your translations.\n"
+    "7C": ".json', with its context is your translations.\n",
+
+    "8": "Your context is an empty string! Please retype the context: ",
+    "9": "Type your context that you want to spell on your Casio fx580vnx: ",
+    "10": "Your context that you set as flag was an empty context. Retype your context that you want to spell on your Casio fx580vnx: ",
+    "11": "Your context was over than 17 characters. Please retype your context: ",
+    "12": "Retype your context: "
 }

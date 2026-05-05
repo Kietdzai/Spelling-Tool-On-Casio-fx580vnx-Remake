@@ -21,5 +21,11 @@
 
     "7A": "Không thể tìm thấy ngôn ngữ '",
     "7B": "'. Bạn có thể tạo một tệp tin '",
-    "7C": ".json', với nội dung trong đó là bản dịch sang ngôn ngữ của bạn.\n"
+    "7C": ".json', với nội dung trong đó là bản dịch sang ngôn ngữ của bạn.\n",
+
+    "8": "Chuỗi của bạn là chuỗi rỗng! Vui lòng nhập lại nội dung: ",
+    "9": "Nhập nội dung của bạn muốn spell trên Casio fx580vnx: ",
+    "10": "Chuỗi bạn nhập từ cờ là một chuỗi rỗng. Nhập lại nội dung bạn muốn spell trên Casio fx580vnx: ",
+    "11": "Nội dung bạn mới vừa nhập quá 17 kí tự. Vui lòng nhập lại: ",
+    "12": "Nhập lại nội dung của bạn: "
 }

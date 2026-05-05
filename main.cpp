@@ -171,5 +171,19 @@ int main(int argc, char** argv){
             }
         }
     }
+    if (opts.find("Context") == opts.end() || opts["Context"] == "" || opts["Context"].length() > 17){
+        if (opts.find("Context") == opts.end()) std::cout << GetStringByLangPack("9");
+        else if (opts["Context"] == "") std::cout << GetStringByLangPack("10");
+        else if (opts["Context"].length() > 17){
+            // Đã gọi
+            if (called_args["-c"] > 0) std::cout << GetStringByLangPack("12");
+            else std::cout << GetStringByLangPack("11");
+        }
+        std::cin >> opts["Context"];
+        while (opts["Context"] == "" || opts["Context"].length() > 17){
+            std::cout << GetStringByLangPack("11");
+            std::cin >> opts["Context"];
+        }
+    }
     return 0;
 }

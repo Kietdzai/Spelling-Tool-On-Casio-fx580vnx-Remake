@@ -1,3 +1,7 @@
+/* SPELLER FOR CASIO FX580VNX - BASIC SPELL USING VARIABLES */
+/* Developed by axesmc(Discord: @Kiet1302181) */
+/* ALL USERS CAN BE DISTRIBUTE FOR ANY PERSONAL PURPOSE. */
+
 #include "JSONObject"
 #include <cstring>
 
@@ -195,7 +199,9 @@ int main(int argc, char** argv){
             std::cin >> opts["Context"];
         }
     }
+    // Xử lý chính
 
+    // Ends program
     if (opts["Is Debug Mode"] == "true"){
         if (errs > 0){
             std::cout << errs << GetStringByLangPack("13");

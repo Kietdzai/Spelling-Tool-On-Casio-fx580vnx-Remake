@@ -201,6 +201,7 @@ int main(int argc, char** argv){
     }
     // Xử lý chính
 
+    // Characters form: {"<Character>": {"Hex": "<hex>", "Key": "<key>", "Token": "<token>"}}
     // Ends program
     if (opts["Is Debug Mode"] == "true"){
         if (errs > 0){
